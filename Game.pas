@@ -1,5 +1,8 @@
 ﻿uses GraphWPF, WPFObjects, Timers;
 
+var speed1 := 2; //Ball speed
+var speed2 := 3; //Enemy speed
+
 var ballRadius := 30;
 var (x,y) := (ballRadius,ballRadius);
 var Ball := new CircleWPF(ballRadius,ballRadius,ballRadius,gcolor.Fromrgb(255,0,0));
@@ -94,48 +97,48 @@ begin
       
       if ((ml)and(x>ballRadius)) then 
         begin
-          Ball.Left -= 1;
-          x-=1;
+          Ball.Left -= Speed1;
+          x-=speed1;
         end;
       if ((mr)and(x<810-ballRadius)) then 
         begin
-          Ball.Left += 1;
-          x+=1;
+          Ball.Left += speed1;
+          x+=speed1;
         end;
       if ((mt)and(y>ballRadius)) then
         begin
-          Ball.Top -= 1;
-          y-=1;
+          Ball.Top -= speed1;
+          y-=speed1;
         end;
       if ((mb)and(y<610-ballRadius)) then 
         begin
-          Ball.Top += 1;
-          y+=1;
+          Ball.Top += speed1;
+          y+=speed1;
         end;
           
         {----------------------------------------}
         
       if ((el)and(x1>ballRadius1)) then 
         begin
-          Enemy.Left -= 1;
-          x1-=1;
+          Enemy.Left -= speed2;
+          x1-=speed2;
         end;
       if ((er)and(x1<810-ballRadius1)) then 
         begin
-          Enemy.Left += 1;
-          x1+=1;
+          Enemy.Left += speed2;
+          x1+=speed2;
         end;
       if ((et)and(y1>ballRadius1)) then
         begin
-          Enemy.Top -= 1;
-          y1-=1;
+          Enemy.Top -= speed2;
+          y1-=speed2;
         end;
       if ((eb)and(y1<610-ballRadius1)) then 
         begin
-          Enemy.Top += 1;
-          y1+=1;
+          Enemy.Top += speed2;
+          y1+=speed2;
         end;
-    sleep(2);
+    sleep(5);
     end;
   
 end.
