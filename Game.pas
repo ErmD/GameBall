@@ -3,6 +3,8 @@
 var speed1 := 2; //Ball speed
 var speed2 := 3; //Enemy speed
 
+var timeCount:= new TextWPF(370,10,20,'10', colors.Blue);
+
 var ballRadius := 30;
 var (x,y) := (ballRadius,ballRadius);
 var Ball := new CircleWPF(ballRadius,ballRadius,ballRadius,gcolor.Fromrgb(255,0,0));
@@ -63,6 +65,11 @@ begin
   Going.Destroy;
 end;
 
+procedure timeTimer;
+begin
+  timeCount.Text := (strToInt(timeCount.Text) - 1).ToString;
+end;
+
 //Основа
 begin
   
@@ -71,7 +78,9 @@ begin
   OnKeyDown := KeyDown;
   OnKeyUp := KeyUp;
   
-  Var t := new Timer(100,TimerBall);
+  Var t := new Timer(10,TimerBall);
+  var time := New Timer (1000,timeTimer);
+  time.Start;
   
   var gameState := true;
   while gameState do
@@ -80,8 +89,6 @@ begin
         begin
           
           t.Start;
-          Sleep(100);
-          t.Interval := 1500;
           Sleep(3000);
           t.Stop;
 
